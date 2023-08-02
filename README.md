@@ -1,3 +1,3 @@
 # EG-NAS
 
- *Coming soon!!!*
+ *Code coming soon.*
