@@ -3,7 +3,7 @@
 This is the official pytorch implementation for the paper: [*EG-NAS: Neural Architecture Search with Fast Evolutionary Exploration*](https://ojs.aaai.org/index.php/AAAI/article/view/28993), 
 which is accepted by AAAI2024. This repo contains the implementation of architecture search and evaluation on CIFAR-10 and ImageNet using our proposed EG-NAS.
 
-![intro](https://github.com/caicaicheng/EG-NAS/blob/main/figs/EG-NAS.pdf)
+![intro](figs/EG-NAS.pdf)
 
 ## Quick Start
 
