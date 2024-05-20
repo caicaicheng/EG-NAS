@@ -14,7 +14,7 @@ import torch.backends.cudnn as cudnns
 
 from torch.autograd import Variable
 from model_search import Network
-from architect import Architect
+
 import time
 from cmaes import CMA
 
@@ -114,8 +114,8 @@ def main():
   num_train = len(train_data)
   indices = list(range(num_train))
   split = int(np.floor(args.train_portion * num_train))
-  architect = Architect(model, args)
-# 
+
+#
     
   train_queue = torch.utils.data.DataLoader(
       train_data, batch_size=args.batch_size,

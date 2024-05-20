@@ -18,7 +18,7 @@ from model import NetworkCIFAR as Network
 import shutil
 
 parser = argparse.ArgumentParser("cifar")
-parser.add_argument('--data', type=str, default='/home/cai/cai_code/data', help='location of the data corpus')
+parser.add_argument('--data', type=str, default='../data', help='location of the data corpus')
 parser.add_argument('--set', type=str, default='cifar10', help='location of the data corpus')
 parser.add_argument('--batch_size', type=int, default=96, help='batch size')
 parser.add_argument('--learning_rate', type=float, default=0.025, help='init learning rate')
@@ -37,12 +37,12 @@ parser.add_argument('--cutout_length', type=int, default=16, help='cutout length
 parser.add_argument('--drop_path_prob', type=float, default=0.3, help='drop path probability')
 parser.add_argument('--save', type=str, default='EXP', help='experiment name')
 parser.add_argument('--seed', type=int, default=0, help='random seed')
-parser.add_argument('--arch', type=str, default='shapley_nas', help='which architecture to use')
+parser.add_argument('--arch', type=str, default='eg_nas', help='which architecture to use')
 parser.add_argument('--resume', type=str, default=None, help='which architecture to resume')
 parser.add_argument('--grad_clip', type=float, default=5, help='gradient clipping')
 args = parser.parse_args()
 
-args.save = 'eval-sim4-{}-{}'.format(args.save, time.strftime("%Y%m%d-%H%M%S"))
+args.save = 'eval-search-{}-{}'.format(args.save, time.strftime("%Y%m%d-%H%M%S"))
 utils.create_exp_dir(args.save, scripts_to_save=glob.glob('*.py'))
 
 log_format = '%(asctime)s %(message)s'
@@ -106,8 +106,6 @@ def main():
   else:
       train_data = dset.CIFAR10(root=args.data, train=True, download=True, transform=train_transform)
       valid_data = dset.CIFAR10(root=args.data, train=False, download=True, transform=valid_transform)
-  #train_data = dset.CIFAR10(root=args.data, train=True, download=True, transform=train_transform)
-  #valid_data = dset.CIFAR10(root=args.data, train=False, download=True, transform=valid_transform)
 
   train_queue = torch.utils.data.DataLoader(
       train_data, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=2)
